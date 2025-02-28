@@ -1,0 +1,3 @@
+[submodule "PRK"]
+	path = PRK
+	url = https://github.com/ParRes/Kernels
