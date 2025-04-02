@@ -7,8 +7,11 @@ MPIRMA_BIN := $(MPIRMA_FOLDER)/p2p
 MPISHM_FOLDER := PRK/MPISHM/Synch_p2p
 MPISHM_BIN := $(MPISHM_FOLDER)/p2p
 
-.PHONY:all
-all: PRK PRK/common/make.defs $(MPI1_BIN) $(MPIRMA_BIN) $(MPISHM_BIN)
+MPIOPENMP_FOLDER := PRK/MPIOPENMP/Synch_p2p
+MPIOPENMP_BIN := $(MPIOPENMP_FOLDER)/p2p
+
+.PHONY: all
+all: PRK PRK/common/make.defs $(MPI1_BIN) $(MPIRMA_BIN) $(MPISHM_BIN) $(MPIOPENMP_BIN)
 
 PRK:
 	git submodule init --update
@@ -25,6 +28,9 @@ $(MPIRMA_BIN):
 $(MPISHM_BIN):
 	make -C $(MPISHM_FOLDER) p2p
 
+$(MPIOPENMP_BIN):
+	make -C $(MPIOPENMP_FOLDER) p2p
+
 .PHONY: clean
 clean:
 	rm -f $(MPI1_BIN)
@@ -33,3 +39,5 @@ clean:
 	rm -f $(MPIRMA_FOLDER)/*.o
 	rm -f $(MPISHM_BIN)
 	rm -f $(MPISHM_FOLDER)/*.o
+	rm -f $(MPIOPENMP_BIN)
+	rm -f $(MPIOPENMP_FOLDER)/*.o
