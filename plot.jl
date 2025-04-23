@@ -4,11 +4,11 @@ using CairoMakie
 
 df = CSV.read("results.csv", DataFrame)
 
-fig = Figure()
+fig = Figure(size=(1280, 800))
 
 xticks = 2 .^ range(5, 16)
 
-ax = Axis(fig[1, 1], xlabel="Cores", ylabel="MFLOPs", xscale=log2, xticks = (xticks, string.(xticks)), ytickformat = "{:.3f}")
+ax = Axis(fig[1, 1], xlabel="Cores", ylabel="MFLOPs", xscale=log2, xticks = (xticks, string.(xticks)), ytickformat = "{:}", title = "Synch_p2p")
 
 data = []
 

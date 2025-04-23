@@ -25,7 +25,7 @@ for comm in ["mpi1", "mpiomp", "mpirma", "mpishm"]
     for n in 2 .^ range(5, 16)
         file = find_latest(comm, n)
         if file == ""
-            println(n, " ", comm, " found")
+            println(n, " ", comm, " not found")
             continue
         end
         output = read(file, String)
