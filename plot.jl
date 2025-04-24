@@ -6,7 +6,7 @@ df = CSV.read("results.csv", DataFrame)
 
 fig = Figure(size=(1280, 800))
 
-xticks = 2 .^ range(5, 16)
+xticks = 2 .^ range(5, 15)
 
 ax = Axis(fig[1, 1], xlabel="Cores", ylabel="MFLOPs", xscale=log2, xticks = (xticks, string.(xticks)), ytickformat = "{:}", title = "Synch_p2p")
 
