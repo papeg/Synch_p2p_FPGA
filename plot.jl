@@ -13,7 +13,9 @@ ax = Axis(fig[1, 1], xlabel="Cores", ylabel="MFLOPs", xscale=log2, xticks = (xti
 data = []
 
 for df_group in groupby(df, "Communication")
-    push!(data, lines!(ax, df_group[!, "Ranks"], df_group[!, "MFlops_per_s"], label="$(first(df_group[!, "Communication"]))"))
+    label = first(df_group[!, "Communication"])
+    linestyle = occursin("omp", label) ? :dot : :solid
+    push!(data, lines!(ax, df_group[!, "Ranks"], df_group[!, "MFlops_per_s"], label="$(label)"; linestyle))
 end
 
 Legend(fig[1, 2], [d for d in data], [d.label for d in data])
