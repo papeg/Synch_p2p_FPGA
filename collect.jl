@@ -22,7 +22,7 @@ function find_latest(to_find)
 end
 
 df = DataFrame(Communication = String[], Ranks = Int[], MFlops_per_s = Float64[], Validates = Bool[])
-for comm in [["mpi1", "mpirma", "mpishm"];["mpiomp_" * string(Int(i)) for i in logrange(1, 128, 2)]]
+for comm in [["mpi1", "mpirma", "mpishm"];["mpiomp_" * string(Int(i)) for i in logrange(1, 128, 8)]]
     for problem_size in [49152]
         for n in 2 .^ range(5, 16)
             to_find = join([comm, n, problem_size, problem_size], "_")
